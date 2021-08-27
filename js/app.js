@@ -19,6 +19,7 @@
 */
 
 
+
 /**
  * End Global Variables
  * Start Helper Functions
@@ -32,6 +33,28 @@
  * Begin Main Functions
  * 
 */
+//Select sections
+
+const navbar = document.getElementById('navbar__list');
+
+
+// Create button
+const button = document.createElement('button');
+button.innerText = 'Create Section';
+
+//Add the button to body
+document.body.appendChild(button);
+
+//Add the event listener to the button
+button.addEventListener('click', function() {
+    //Create new section
+    var newSec = document.createElement(newSec);
+    newSec.innerText = 'New Section';
+
+    //Add new section to the navbar
+    navbar.appendChild(newSec);
+})
+
 
 // build the nav
 
