@@ -34,7 +34,10 @@
  * 
 */
 //Select sections
+const sections = document.querySelectorAll('section');
+let numberOfSec = sections.length;
 
+//Select navigation ul
 const navbar = document.getElementById('navbar__list');
 
 
@@ -51,11 +54,15 @@ button.addEventListener('click', function() {
     var newSec = document.createElement('section');
     var newDiv = document.createElement('div');
     var newTitle = document.createElement('h2');
-    newTitle.innerText = 'New Section';
+
+    //Add title with increasing number
+    newTitle.innerText = ' Section '+ (numberOfSec + 1);
+    numberOfSec += 1 ;
 
     var newPar = document.createElement('p');
     newPar.innerText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fermentum metus faucibus lectus pharetra dapibus. Suspendisse potenti. Aenean aliquam elementum mi, ac euismod augue. Donec eget lacinia ex. Phasellus imperdiet porta orci eget mollis. Sed convallis sollicitudin mauris ac tincidunt. Donec bibendum, nulla eget bibendum consectetur, sem nisi aliquam leo, ut pulvinar quam nunc eu augue. Pellentesque maximus imperdiet elit a pharetra. Duis lectus mi, aliquam in mi quis, aliquam porttitor lacus. Morbi a tincidunt felis. Sed leo nunc, pharetra et elementum non, faucibus vitae elit. Integer nec libero venenatis libero ultricies molestie semper in tellus. Sed congue et odio sed euismod.';
    
+    //Add new section, div and paragraph
     newDiv.appendChild(newTitle);
     newDiv.appendChild(newPar);
     newSec.appendChild(newDiv);
@@ -69,7 +76,8 @@ button.addEventListener('click', function() {
 
     //Create new section link on navbar
     var newSecLink = document.createElement('newSecLink');
-    newSecLink.innerText = 'New Section Link';
+    newSecLink.innerText = newTitle.innerText +'';
+
     //Add new section to the navbar
     navbar.appendChild(newSecLink);
 
