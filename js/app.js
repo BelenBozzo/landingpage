@@ -44,6 +44,7 @@ const navbar = document.getElementById('navbar__list');
 // Create button
 const button = document.createElement('button');
 button.innerText = 'Create Section';
+button.classList.add('navbar__menu');
 
 //Add the button to body
 document.body.appendChild(button);
