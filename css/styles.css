@@ -119,7 +119,9 @@ button {
     width: 10%;
     z-index: 5;
     border-style: hidden;
-    font-family: 'Merriweather', serif;
+    font-family: 'Merriweather', serif, bold;
+    font-weight: bold;
+
 }
 
 /* ---- Theme Rules ---- */

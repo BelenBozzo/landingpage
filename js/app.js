@@ -34,17 +34,30 @@
  * 
 */
 //Select sections
-const sections = document.querySelectorAll('section');
+const sections = Array.from(document.querySelectorAll('section'));
 let numberOfSec = sections.length;
 
 //Select navigation ul
 const navbar = document.getElementById('navbar__list');
 
+//Create li
+function liCreator() {
+    for (section of sections) {
+    //Select the name and the link from data type and id
+    sectionName = section.getAttribute('data-nav');
+    sectionLink = section.getAttribute('id');
+
+    listItem = document.createElement('li');
+    listItem.innerHTML = `<a class='menu__link' href='#${sectionLink}'>${sectionName}</a>`;
+
+    navbar.appendChild(listItem);
+    }
+}
+liCreator();
 
 // Create button
 const button = document.createElement('button');
 button.innerText = 'Create Section';
-button.classList.add('navbar__menu');
 
 //Add the button to body
 document.body.appendChild(button);
@@ -56,8 +69,12 @@ button.addEventListener('click', function() {
     var newDiv = document.createElement('div');
     var newTitle = document.createElement('h2');
 
+    //Give an id and data-nav to the new section
+    newSec.setAttribute('id', 'section'+(numberOfSec+1));
+    newSec.setAttribute('data-nav', 'Section'+' '+(numberOfSec+1));
+
     //Add title with increasing number
-    newTitle.innerText = ' Section '+ (numberOfSec + 1);
+    newTitle.innerText = ' Section '+ (numberOfSec + 1) + ' ';
     numberOfSec += 1 ;
 
     var newPar = document.createElement('p');
@@ -76,8 +93,13 @@ button.addEventListener('click', function() {
     main.appendChild(newSec);
 
     //Create new section link on navbar
-    var newSecLink = document.createElement('newSecLink');
-    newSecLink.innerText = newTitle.innerText +'';
+    listItem = document.createElement('li');
+    listItem.innerHTML = `<a class='menu__link' href='#${sectionLink}'>${newTitle.innerText}</a>`;
+
+    navbar.appendChild(listItem);
+
+    
+  
 
     //Add new section to the navbar
     navbar.appendChild(newSecLink);
