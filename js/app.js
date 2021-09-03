@@ -80,12 +80,12 @@ button.addEventListener('click', function() {
     var newPar = document.createElement('p');
     newPar.innerText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fermentum metus faucibus lectus pharetra dapibus. Suspendisse potenti. Aenean aliquam elementum mi, ac euismod augue. Donec eget lacinia ex. Phasellus imperdiet porta orci eget mollis. Sed convallis sollicitudin mauris ac tincidunt. Donec bibendum, nulla eget bibendum consectetur, sem nisi aliquam leo, ut pulvinar quam nunc eu augue. Pellentesque maximus imperdiet elit a pharetra. Duis lectus mi, aliquam in mi quis, aliquam porttitor lacus. Morbi a tincidunt felis. Sed leo nunc, pharetra et elementum non, faucibus vitae elit. Integer nec libero venenatis libero ultricies molestie semper in tellus. Sed congue et odio sed euismod.';
    
-    //Add new section, div and paragraph
+    //Add new div and paragraph
     newDiv.appendChild(newTitle);
     newDiv.appendChild(newPar);
     newSec.appendChild(newDiv);
 
-    // Style the new section
+    // Style the new div
     newDiv.classList.add('landing__container');
    
     //Add the new section to the page
@@ -93,22 +93,13 @@ button.addEventListener('click', function() {
     main.appendChild(newSec);
 
     //Create new section link on navbar
+    newSecName = newSec.getAttribute('data-nav');
+    newSecLink = newSec.getAttribute('id');
     listItem = document.createElement('li');
-    listItem.innerHTML = `<a class='menu__link' href='#${sectionLink}'>${newTitle.innerText}</a>`;
-
+    listItem.innerHTML = `<a class='menu__link' href='#${newSecLink}'>${newSecName}</a>`;
     navbar.appendChild(listItem);
-
-    
-  
-
-    //Add new section to the navbar
-    navbar.appendChild(newSecLink);
-
-
 })
-
-
-// build the nav
+ 
 
 
 // Add class 'active' to section when near top of viewport
