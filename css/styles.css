@@ -112,15 +112,17 @@ section {
 
 /* --- Button --- */
 button {
-    background-color: #fff;
+    background-color: transparent;
     color:#333;
-    position: absolute;
-    top: 0;
+    margin: 0;
+    position:fixed;
+    top: 3%;
     width: 10%;
     z-index: 5;
     border-style: hidden;
     font-family: 'Merriweather', serif, bold;
     font-weight: bold;
+    font-size: 15px;
 
 }
 
