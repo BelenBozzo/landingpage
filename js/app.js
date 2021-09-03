@@ -28,11 +28,6 @@
 
 
 
-/**
- * End Helper Functions
- * Begin Main Functions
- * 
-*/
 //Select sections
 const sections = Array.from(document.querySelectorAll('section'));
 let numberOfSec = sections.length;
@@ -48,12 +43,45 @@ function liCreator() {
     sectionLink = section.getAttribute('id');
 
     listItem = document.createElement('li');
-    listItem.innerHTML = `<a class='menu__link' href='#${sectionLink}'>${sectionName}</a>`;
+    listItem.innerHTML = `<a class='menu__link' data-link='${sectionLink}'>${sectionName}</a>`;
 
     navbar.appendChild(listItem);
     }
 }
 liCreator();
+
+// Scroll to section on link click
+
+
+//Old approach - event listener for each item
+//const links = document.querySelectorAll('.menu__link');
+// links.forEach((item) => {
+//    item.addEventListener("click", () => {
+//        console.log(item)
+//    })
+//})
+
+//Event Delegation
+
+//const parent = document.getElementById("navbar__list");
+
+//parent.addEventListener('click', event => {
+//    if (event.target.className === 'menu__link') {
+//        console.log(event.target.innerHTML);
+//   }
+//});
+
+const parent = document.getElementById("navbar__list");
+
+parent.addEventListener('click', event => {
+    if (event.target.className === 'menu__link') {
+        let el = document.getElementById((newSecLink));
+        el.scrollIntoView({behavior: 'smooth'});
+   }
+});
+
+
+
 
 // Create button
 const button = document.createElement('button');
@@ -65,9 +93,9 @@ document.body.appendChild(button);
 //Add the event listener to the button
 button.addEventListener('click', function() {
     //Create new section, div, and paragraph with text
-    var newSec = document.createElement('section');
-    var newDiv = document.createElement('div');
-    var newTitle = document.createElement('h2');
+    const newSec = document.createElement('section');
+    const newDiv = document.createElement('div');
+    const newTitle = document.createElement('h2');
 
     //Give an id and data-nav to the new section
     newSec.setAttribute('id', 'section'+(numberOfSec+1));
@@ -77,7 +105,7 @@ button.addEventListener('click', function() {
     newTitle.innerText = ' Section '+ (numberOfSec + 1) + ' ';
     numberOfSec += 1 ;
 
-    var newPar = document.createElement('p');
+    const newPar = document.createElement('p');
     newPar.innerText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fermentum metus faucibus lectus pharetra dapibus. Suspendisse potenti. Aenean aliquam elementum mi, ac euismod augue. Donec eget lacinia ex. Phasellus imperdiet porta orci eget mollis. Sed convallis sollicitudin mauris ac tincidunt. Donec bibendum, nulla eget bibendum consectetur, sem nisi aliquam leo, ut pulvinar quam nunc eu augue. Pellentesque maximus imperdiet elit a pharetra. Duis lectus mi, aliquam in mi quis, aliquam porttitor lacus. Morbi a tincidunt felis. Sed leo nunc, pharetra et elementum non, faucibus vitae elit. Integer nec libero venenatis libero ultricies molestie semper in tellus. Sed congue et odio sed euismod.';
    
     //Add new div and paragraph
@@ -89,14 +117,14 @@ button.addEventListener('click', function() {
     newDiv.classList.add('landing__container');
    
     //Add the new section to the page
-    var main = document.querySelector('main');
+    const main = document.querySelector('main');
     main.appendChild(newSec);
 
     //Create new section link on navbar
     newSecName = newSec.getAttribute('data-nav');
     newSecLink = newSec.getAttribute('id');
     listItem = document.createElement('li');
-    listItem.innerHTML = `<a class='menu__link' href='#${newSecLink}'>${newSecName}</a>`;
+    listItem.innerHTML = `<a class='menu__link' data-link='${newSecLink}'>${newSecName}</a>`;
     navbar.appendChild(listItem);
 })
  
@@ -108,6 +136,9 @@ button.addEventListener('click', function() {
 // Scroll to anchor ID using scrollTO event
 
 
+
+
+
 /**
  * End Main Functions
  * Begin Events
@@ -116,7 +147,7 @@ button.addEventListener('click', function() {
 
 // Build menu 
 
-// Scroll to section on link click
+
 
 // Set sections as active
 
