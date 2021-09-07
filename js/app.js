@@ -35,7 +35,7 @@ let numberOfSec = sections.length;
 //Select navigation ul
 const navbar = document.getElementById('navbar__list');
 
-//Create li
+//Create li (links on navbar) from the already existent sections
 function liCreator() {
     for (section of sections) {
     //Select the name and the link from data type and id
@@ -75,11 +75,73 @@ const parent = document.getElementById("navbar__list");
 
 parent.addEventListener('click', event => {
     if (event.target.className === 'menu__link') {
-        let el = document.getElementById((newSecLink));
-        el.scrollIntoView({behavior: 'smooth'});
+        let el = document.getElementById((newSecLink)); // Resolver :Como linkear los id de las secciones y los link?
+        el.scrollIntoView({behavior: 'smooth'}); //Scroll funciona
    }
 });
 
+
+
+function sectionCreator() {
+    //Create new section by cloning section 1
+    const copySec = document.querySelector('#section1');
+    const newSec = copySec.cloneNode(true);
+    
+
+    //Give an id and data-nav to the new section
+    newSec.id = 'section'+ (numberOfSec + 1);
+    newSec.setAttribute('class', '');
+    newSec.setAttribute('data-nav', 'Section'+' '+(numberOfSec+1));
+    numberOfSec += 1;
+
+
+    const clonedDiv = newSec.children;
+
+    const listChildren = clonedDiv.children;
+    console.log(listChildren);
+
+    //KEEP WORKING HERE!   FINISH FIGURING OUT HOW TO CHANGE THE TITLE IN THE NEW SECTION! 
+    //const newTitle = listChildren[2];
+   // console.log(newTitle);
+
+
+    //Add the new section to the page
+    const main = document.querySelector('main');
+    main.appendChild(newSec);
+
+
+     // const newSec = document.createElement('section');
+      //const newDiv = document.createElement('div');
+      //const newTitle = document.createElement('h2');
+  
+      //Give an id and data-nav to the new section
+     // newSec.setAttribute('id', 'section'+(numberOfSec+1));
+      
+      //Add title with increasing number
+     // newTitle.innerText = ' Section '+ (numberOfSec + 1) + ' ';
+     // numberOfSec += 1 ;
+  
+      //const newPar = document.createElement('p');
+     // newPar.innerText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fermentum metus faucibus lectus pharetra dapibus. Suspendisse potenti. Aenean aliquam elementum mi, ac euismod augue. Donec eget lacinia ex. Phasellus imperdiet porta orci eget mollis. Sed convallis sollicitudin mauris ac tincidunt. Donec bibendum, nulla eget bibendum consectetur, sem nisi aliquam leo, ut pulvinar quam nunc eu augue. Pellentesque maximus imperdiet elit a pharetra. Duis lectus mi, aliquam in mi quis, aliquam porttitor lacus. Morbi a tincidunt felis. Sed leo nunc, pharetra et elementum non, faucibus vitae elit. Integer nec libero venenatis libero ultricies molestie semper in tellus. Sed congue et odio sed euismod.';
+     
+      //Add new div and paragraph
+     // newDiv.appendChild(newTitle);
+     // newDiv.appendChild(newPar);
+     // newSec.appendChild(newDiv);
+  
+      // Style the new div
+      //newDiv.classList.add('landing__container');
+     
+      
+  
+      //Create new section link on navbar
+      //newSecName = newSec.getAttribute('data-nav');
+      //newSecLink = newSec.getAttribute('id');
+      //listItem = document.createElement('li');
+     // listItem.innerHTML = `<a class='menu__link' data-link='${newSecLink}'>${newSecName}</a>`;
+     // navbar.appendChild(listItem);
+
+}
 
 
 
@@ -87,48 +149,17 @@ parent.addEventListener('click', event => {
 const button = document.createElement('button');
 button.innerText = 'Create Section';
 
+//Add the event listener to the button
+button.addEventListener('click', sectionCreator);
+
 //Add the button to body
 document.body.appendChild(button);
 
-//Add the event listener to the button
-button.addEventListener('click', function() {
-    //Create new section, div, and paragraph with text
-    const newSec = document.createElement('section');
-    const newDiv = document.createElement('div');
-    const newTitle = document.createElement('h2');
 
-    //Give an id and data-nav to the new section
-    newSec.setAttribute('id', 'section'+(numberOfSec+1));
-    newSec.setAttribute('data-nav', 'Section'+' '+(numberOfSec+1));
 
-    //Add title with increasing number
-    newTitle.innerText = ' Section '+ (numberOfSec + 1) + ' ';
-    numberOfSec += 1 ;
 
-    const newPar = document.createElement('p');
-    newPar.innerText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fermentum metus faucibus lectus pharetra dapibus. Suspendisse potenti. Aenean aliquam elementum mi, ac euismod augue. Donec eget lacinia ex. Phasellus imperdiet porta orci eget mollis. Sed convallis sollicitudin mauris ac tincidunt. Donec bibendum, nulla eget bibendum consectetur, sem nisi aliquam leo, ut pulvinar quam nunc eu augue. Pellentesque maximus imperdiet elit a pharetra. Duis lectus mi, aliquam in mi quis, aliquam porttitor lacus. Morbi a tincidunt felis. Sed leo nunc, pharetra et elementum non, faucibus vitae elit. Integer nec libero venenatis libero ultricies molestie semper in tellus. Sed congue et odio sed euismod.';
-   
-    //Add new div and paragraph
-    newDiv.appendChild(newTitle);
-    newDiv.appendChild(newPar);
-    newSec.appendChild(newDiv);
 
-    // Style the new div
-    newDiv.classList.add('landing__container');
-   
-    //Add the new section to the page
-    const main = document.querySelector('main');
-    main.appendChild(newSec);
-
-    //Create new section link on navbar
-    newSecName = newSec.getAttribute('data-nav');
-    newSecLink = newSec.getAttribute('id');
-    listItem = document.createElement('li');
-    listItem.innerHTML = `<a class='menu__link' data-link='${newSecLink}'>${newSecName}</a>`;
-    navbar.appendChild(listItem);
-})
  
-
 
 // Add class 'active' to section when near top of viewport
 
