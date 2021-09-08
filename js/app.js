@@ -13,21 +13,6 @@
  * 
 */
 
-/**
- * Define Global Variables
- * 
-*/
-
-
-
-/**
- * End Global Variables
- * Start Helper Functions
- * 
-*/
-
-
-
 //Select sections
 const sections = Array.from(document.querySelectorAll('section'));
 let numberOfSec = sections.length;
@@ -71,15 +56,13 @@ liCreator();
 //   }
 //});
 
-const parent = document.getElementById("navbar__list");
 
-parent.addEventListener('click', event => {
-    if (event.target.className === 'menu__link') {
-        let el = document.getElementById((newSecLink)); // Resolver :Como linkear los id de las secciones y los link?
-        el.scrollIntoView({behavior: 'smooth'}); //Scroll funciona
-   }
-});
+// Create button
+const button = document.createElement('button');
+button.innerText = 'Create Section';
 
+//Add the button to body
+document.body.appendChild(button);
 
 
 function sectionCreator() {
@@ -89,26 +72,32 @@ function sectionCreator() {
     
 
     //Give an id and data-nav to the new section
-    newSec.id = 'section'+ (numberOfSec + 1);
+    newSec.setAttribute('id','section'+ (numberOfSec + 1));
     newSec.setAttribute('class', '');
     newSec.setAttribute('data-nav', 'Section'+' '+(numberOfSec+1));
     numberOfSec += 1;
 
-
-    const clonedDiv = newSec.children;
-
-    const listChildren = clonedDiv.children;
-    console.log(listChildren);
-
-    //KEEP WORKING HERE!   FINISH FIGURING OUT HOW TO CHANGE THE TITLE IN THE NEW SECTION! 
-    //const newTitle = listChildren[2];
-   // console.log(newTitle);
-
+    //Give appropiate title to the new section
+    const clonedDiv = newSec.children[0]; 
+    const clonedTitle = clonedDiv.children[0];
+    const newTitle = newSec.getAttribute('data-nav');
+    clonedTitle.innerHTML = newTitle;
 
     //Add the new section to the page
     const main = document.querySelector('main');
     main.appendChild(newSec);
 
+    //Create new section link on navbar
+    sectionName = newSec.getAttribute('data-nav');
+    sectionLink = newSec.getAttribute('id');
+    listItem = document.createElement('li');
+    listItem.innerHTML = `<a class='menu__link' data-link='${sectionLink}'>${sectionName}</a>`;
+    navbar.appendChild(listItem);
+
+
+
+
+     //OLD CODE FOR CREATING THE NEW SECTION
 
      // const newSec = document.createElement('section');
       //const newDiv = document.createElement('div');
@@ -132,28 +121,30 @@ function sectionCreator() {
       // Style the new div
       //newDiv.classList.add('landing__container');
      
-      
-  
-      //Create new section link on navbar
+       //Create new section link on navbar
       //newSecName = newSec.getAttribute('data-nav');
       //newSecLink = newSec.getAttribute('id');
       //listItem = document.createElement('li');
      // listItem.innerHTML = `<a class='menu__link' data-link='${newSecLink}'>${newSecName}</a>`;
      // navbar.appendChild(listItem);
+  
+      
 
 }
-
-
-
-// Create button
-const button = document.createElement('button');
-button.innerText = 'Create Section';
 
 //Add the event listener to the button
 button.addEventListener('click', sectionCreator);
 
-//Add the button to body
-document.body.appendChild(button);
+
+//Add functionality to navbar links
+const parent = document.getElementById("navbar__list");
+
+parent.addEventListener('click', event => {
+    if (event.target.className === 'menu__link') {
+        let el = document.getElementById((sectionLink)); // Resolver :Como linkear los id de las secciones y los link?
+        el.scrollIntoView({behavior: 'smooth'}); //Scroll funciona
+   }
+});
 
 
 
