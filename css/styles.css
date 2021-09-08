@@ -110,8 +110,8 @@ section {
     color: #fff;
 }
 
-/* --- Button --- */
-button {
+/* --- Buttons --- */
+#newSecButton {
     background-color: transparent;
     color:#333;
     margin: 0;
@@ -119,12 +119,41 @@ button {
     top: 3%;
     width: 10%;
     z-index: 5;
+    cursor: pointer; 
     border-style: hidden;
     font-family: 'Merriweather', serif, bold;
     font-weight: bold;
     font-size: 15px;
 
 }
+
+#newSecButton:hover{
+    background-color: #555;
+
+}
+
+#topButton {
+    display: none; /* Hidden by default */
+    position: fixed;
+    bottom: 20px;
+    right: 8px;
+    z-index: 99; /* Make sure it does not overlap */
+    box-sizing: content-box;
+    border: none; 
+    outline: none; 
+    background-color: white;
+    color: black; 
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 10px; 
+    border-radius: 80%;
+    font-family: 'Merriweather', serif, bold;
+    font-size: 12px; 
+    font-weight: bold;
+  }
+  
+  #topButton:hover {
+    background-color: #555; 
+  }
 
 /* ---- Theme Rules ---- */
 /* Landing Container Styles */
