@@ -64,6 +64,10 @@ section {
 /* ---- Module Rules ---- */
 
 /* Navigation Styles*/
+.navbar__hidden {
+    display: none;
+}
+
 .navbar__menu ul {
     height: 10%;
     padding-left: 0;
@@ -112,11 +116,12 @@ section {
 
 /* --- Buttons --- */
 #newSecButton {
-    background-color: transparent;
+    background-color: white;
     color:#333;
     margin: 0;
     position:fixed;
     top: 3%;
+    left: 10px;
     width: 10%;
     z-index: 5;
     cursor: pointer; 
@@ -130,6 +135,10 @@ section {
 #newSecButton:hover{
     background-color: #555;
 
+}
+
+.button__hidden{
+    display:none;
 }
 
 #topButton {

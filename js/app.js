@@ -18,6 +18,7 @@ let numberOfSec = sections.length;
 //Select navigation ul
 const navbar = document.getElementById('navbar__list');
 
+
 function liCreator(){ 
     //Select the name and the link from data type and id
     let sectionName = section.getAttribute('data-nav');
@@ -35,6 +36,13 @@ function buildNav(){
 }
 buildNav();
 
+//Hide navigation bar when scrolling
+window.addEventListener('scroll', () => {
+    navbar.setAttribute('class', 'navbar__hidden')
+    window.setTimeout(function() { navbar.removeAttribute('class') }, 800);
+    button.setAttribute('class', 'navbar__hidden')
+    window.setTimeout(function() { button.removeAttribute('class') }, 800);
+});
 
 // Create button
 const button = document.createElement('button');
