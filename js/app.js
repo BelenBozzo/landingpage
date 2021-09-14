@@ -34,22 +34,11 @@ function buildNav(){
         liCreator();
     }
 }
-buildNav();
 
-//Hide navigation bar when scrolling
-window.addEventListener('scroll', () => {
-    navbar.setAttribute('class', 'navbar__hidden')
-    window.setTimeout(function() { navbar.removeAttribute('class') }, 800);
-    button.setAttribute('class', 'navbar__hidden')
-    window.setTimeout(function() { button.removeAttribute('class') }, 800);
-});
-
-// Create button
+// Create 'Create Section' button
 const button = document.createElement('button');
 button.innerText = 'Create Section';
 button.setAttribute('id', 'newSecButton');
-
-//Add the button to body
 document.body.appendChild(button);
 
 //Function that creates sections (for the button)
@@ -90,34 +79,11 @@ function sectionCreator() {
 
 }
 
-//Add the event listener to the button
-button.addEventListener('click', sectionCreator);
-
-
-//Add functionality to navbar links (event delegation: works with future  created elements)
-const parent = document.getElementById("navbar__list");
-parent.addEventListener('click', event => {
-    if (event.target.className === 'menu__link') {
-        let navBarLink = event.target.getAttribute('data-link');
-        for (section of sections){
-            let sectionLink = section.getAttribute('id');
-            if (sectionLink === navBarLink){
-                let el = document.getElementById((sectionLink));
-                el.scrollIntoView({behavior: 'smooth'});
-            }
-        }
-   }
-});
-
 //Add functionality to scroll to top button
-//Get the button:
 topButton = document.getElementById("topButton");
 
-// When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
-
 function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+  if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
     topButton.style.display = "block";
   } else {
     topButton.style.display = "none";
@@ -134,22 +100,57 @@ function topFunction() {
 
 
 // Add class 'active' to section when near top of viewport
+//Checks if section is in viewport
+function isInViewport(element) {
+    let position = element.getBoundingClientRect();
+    return (position.top >= 0);
+}
 
+// Gives active class to section if in viewport
+function addActiveClass(){
+    for (section of sections) {
+        if (isInViewport(section)){
+            if (!section.classList.contains('your-active-class')){
+                section.classList.add('your-active-class');
+            }
+        } else {
+            section.classList.remove('your-active-class');
+        }
+    }
+}
 
-// Scroll to anchor ID using scrollTO event
+//Hide navigation bar when scrolling
+window.addEventListener('scroll', () => {
+    navbar.setAttribute('class', 'navbar__hidden')
+    window.setTimeout(function() { navbar.removeAttribute('class') }, 1000);
+    button.setAttribute('class', 'navbar__hidden')
+    window.setTimeout(function() { button.removeAttribute('class') }, 1000);
+});
 
-
-
-
-
-/**
- * End Main Functions
- * Begin Events
- * 
-*/
-
-// Build menu 
-
-
+// When the user scrolls down, show the top button
+document.addEventListener('scroll', scrollFunction);
 
 // Set sections as active
+document.addEventListener('scroll', addActiveClass);
+
+//Add the event listener to the top button
+button.addEventListener('click', sectionCreator);
+
+//Add functionality to navbar links (event delegation: works with future created elements)
+const parent = document.getElementById("navbar__list");
+parent.addEventListener('click', event => {
+    if (event.target.className === 'menu__link') {
+        let navBarLink = event.target.getAttribute('data-link');
+        for (section of sections){
+            let sectionLink = section.getAttribute('id');
+            if (sectionLink === navBarLink){
+                let el = document.getElementById((sectionLink));
+                el.scrollIntoView({behavior: 'smooth'});
+            }
+        }
+   }
+});
+
+// Build menu 
+buildNav();
+
