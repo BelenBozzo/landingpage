@@ -1,13 +1,18 @@
 # Landing Page Project
 
-## Table of Contents
+## Description
 
-* [Instructions](#instructions)
+This project consisted on the modification of a static landing page into a responsive site.
+JavaScript was mostly used, to achieve the folowing goals:
+ 
+ - Dinamically built navigation menu
+ - Possibility of creating new sections by pressing a button 
+ - Connecting each link in the navigation menu with the corresponding section
+ - Give a scrolling effect to reach sections 
+ - Additio of active class to sections when in viewport
+ - Addition of a "back to top" button that appears when scrolling
+ - Hiding of navigation mmenu during scrolling
 
-## Instructions
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
-
-To get started, open `js/app.js` and start building out the app's functionality
-
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+ 
+ 

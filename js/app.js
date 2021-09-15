@@ -29,7 +29,7 @@ function liCreator(){
     navbar.appendChild(listItem);
 }
 
-function buildNav(){
+function buildNav() {
     for (section of sections) {
         liCreator();
     }
@@ -68,7 +68,7 @@ function sectionCreator() {
     main.appendChild(section);
 
     //Add the links on navbar
-    function addNewLinks(){
+    function addNewLinks() {
         let sectionName = section.getAttribute('data-nav');
         let sectionLink = section.getAttribute('id');
         var listItem = document.createElement('li');
@@ -107,7 +107,7 @@ function isInViewport(element) {
 }
 
 // Gives active class to section if in viewport
-function addActiveClass(){
+function addActiveClass() {
     for (section of sections) {
         if (isInViewport(section)){
             if (!section.classList.contains('your-active-class')){
