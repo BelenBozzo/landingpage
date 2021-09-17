@@ -15,8 +15,10 @@
 let sections = Array.from(document.querySelectorAll('section'));
 let numberOfSec = sections.length;
 
-//Select navigation ul
+//Define global variables
 const navbar = document.getElementById('navbar__list');
+const button = document.createElement('button');
+const navLinks = Array.from(document.getElementsByClassName('menu__link'));
 
 
 function liCreator(){ 
@@ -36,7 +38,6 @@ function buildNav() {
 }
 
 // Create 'Create Section' button
-const button = document.createElement('button');
 button.innerText = 'Create Section';
 button.setAttribute('id', 'newSecButton');
 document.body.appendChild(button);
@@ -69,9 +70,9 @@ function sectionCreator() {
 
     //Add the links on navbar
     function addNewLinks() {
-        let sectionName = section.getAttribute('data-nav');
-        let sectionLink = section.getAttribute('id');
-        var listItem = document.createElement('li');
+        const sectionName = section.getAttribute('data-nav');
+        const sectionLink = section.getAttribute('id');
+        const listItem = document.createElement('li');
         listItem.innerHTML = `<a class='menu__link' data-link='${sectionLink}'>${sectionName}</a>`;
         navbar.appendChild(listItem);
     }
@@ -112,6 +113,9 @@ function addActiveClass() {
         if (isInViewport(section)){
             if (!section.classList.contains('your-active-class')){
                 section.classList.add('your-active-class');
+                let connect = section.getAttribute('data-nav');
+                document.querySelector(connect);
+                
             }
         } else {
             section.classList.remove('your-active-class');
